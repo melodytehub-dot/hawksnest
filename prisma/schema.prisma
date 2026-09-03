@@ -1,0 +1,246 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────────────────────
+//  CORE
+// ─────────────────────────────────────────────────────────────
+
+model Listing {
+  id              String @id @default(cuid())
+  name            String
+  slug            String @unique
+  title           String
+  subtitle        String
+  description     String
+  longDescription String @default("")
+
+  // location
+  address String @default("2065 SE Van Kleff Ave, Port St. Lucie, FL 34952")
+  city    String @default("Port St. Lucie")
+  state   String @default("FL")
+  country String @default("United States")
+  lat     Float  @default(27.2492)
+  lng     Float  @default(-80.2896)
+
+  // capacity
+  maxGuests Int   @default(16)
+  bedrooms  Int   @default(5)
+  bathrooms Float @default(3)
+  beds      Int   @default(13)
+
+  // pricing defaults (per night)
+  baseRate    Int   @default(0)
+  cleaningFee Int   @default(0)
+  petFee      Int   @default(0)
+  taxRatePct  Float @default(0) // combined sales + resort tax, as a percentage
+  minNights   Int   @default(2)
+  maxNights   Int? // optional cap
+
+  // live availability flags
+  availabilityEnabled Boolean @default(true)
+  paymentsEnabled     Boolean @default(false) // gate checkout until Stripe keys present
+
+  // suggested rates (let owner set; not shown until configured)
+  rateNote String @default("") // e.g. seasonal note
+  currency String @default("USD")
+
+  // review summary
+  rating      Float @default(0)
+  reviewCount Int   @default(0)
+
+  // amenities stored as grouped JSON: [{ group, items[] }]
+  amenitiesText String @default("[]")
+
+  // external sync providers (ical urls stored for the dashboard)
+  airbnbIcalUrl String @default("")
+  vrboIcalUrl   String @default("")
+  airbnbUrl     String @default("")
+  vrboUrl       String @default("")
+
+  // media
+  photos ListingPhoto[]
+  rooms  Room[]
+
+  // calendar / offers
+  rates    RateOverride[]
+  blocks   CalendarBlock[]
+  bookings Booking[]
+  requests BookingRequest[]
+  syncLogs SyncLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Ordered gallery photos, mirroring the Airbnb ordering + section labels
+model ListingPhoto {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  src     String // local path or full url
+  order   Int // global gallery order (0-based)
+  album   String? // section label e.g. "Pool", "Bedroom 1"
+  caption String?
+  tags    String[]
+  isHero  Boolean  @default(false)
+  width   Int? // natural width if known
+  height  Int? // natural height
+
+  createdAt DateTime @default(now())
+
+  @@index([listingId, order])
+}
+
+// Room-by-room sleeping layout ("Where you'll sleep")
+model Room {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  name  String // e.g. Bedroom 1
+  sort  Int     @default(0)
+  beds  Json? // array of { name, count } bed descriptions
+  photo String?
+
+  @@index([listingId, sort])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  PRICING
+// ─────────────────────────────────────────────────────────────
+
+// Seasonal / date-range rate overrides (owner-set)
+model RateOverride {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  startDate DateTime
+  endDate   DateTime // inclusive
+  nightly   Int
+  minNights Int?
+  label     String? // e.g. "Winter · Dec–Feb"
+
+  createdAt DateTime @default(now())
+
+  @@index([listingId, startDate])
+}
+
+// A single "blocked" night (manual block or synced from ical). One row per night.
+model CalendarBlock {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  date      DateTime @db.Date
+  source    String   @default("manual") // manual | airbnb | vrbo | owner
+  reason    String?
+  uid       String? // ical event uid (dedupe)
+  createdAt DateTime @default(now())
+
+  @@unique([listingId, date])
+  @@index([listingId, date])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  BOOKINGS
+// ─────────────────────────────────────────────────────────────
+
+// Confirmed direct booking (blocked + charged once payments live)
+model Booking {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  checkIn  DateTime @db.Date
+  checkOut DateTime @db.Date
+  nights   Int
+  guests   Int
+  name     String
+  email    String
+  phone    String?
+  message  String?
+
+  // amounts in minor currency units (cents) once pricing known
+  nightlyTotal Int @default(0)
+  cleaningFee  Int @default(0)
+  petFee       Int @default(0)
+  taxes        Int @default(0)
+  total        Int @default(0)
+
+  status    String   @default("pending") // pending | confirmed | declined | cancelled
+  source    String   @default("direct") // direct | airbnb | vrbo | manual
+  paymentId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([listingId, checkIn])
+}
+
+// Quote/availability request (pre-payment, still allow direct mail/email)
+model BookingRequest {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  checkIn  DateTime @db.Date
+  checkOut DateTime @db.Date
+  nights   Int
+  guests   Int
+  name     String
+  email    String
+  phone    String?
+  message  String?
+
+  status    String   @default("new") // new | contacted | converted | declined
+  source    String   @default("direct")
+  createdAt DateTime @default(now())
+
+  @@index([listingId, createdAt])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SYNC / ADMIN
+// ─────────────────────────────────────────────────────────────
+
+model SyncLog {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  provider  String // airbnb | vrbo
+  status    String // ok | error
+  events    Int      @default(0)
+  message   String?
+  createdAt DateTime @default(now())
+
+  @@index([listingId, createdAt])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  role         String   @default("owner")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Checklist of materials the owner owes the provider (agreement §4)
+model Material {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  label     String
+  note      String?
+  done      Boolean  @default(false)
+  sort      Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
