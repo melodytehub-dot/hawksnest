@@ -1,13 +1,11 @@
-import { Pool } from "pg";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaNeonHttp } from "@prisma/adapter-neon";
 import { PrismaClient } from "@/generated/prisma/client";
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 function createClient() {
   const url = process.env.DATABASE_URL || "postgresql://localhost:5432/hawksnest";
-  const pool = new Pool({ connectionString: url });
-  const adapter = new PrismaPg(pool);
+  const adapter = new PrismaNeonHttp(url, {});
   return new PrismaClient({ adapter });
 }
 
