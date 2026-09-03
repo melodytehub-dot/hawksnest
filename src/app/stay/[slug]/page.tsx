@@ -6,9 +6,13 @@ import PhotoMosaic from "@/components/stay/PhotoMosaic";
 import BookingCard from "@/components/stay/BookingCard";
 import { starIcon, pinIcon, ownerCircle } from "@/components/site/icons";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 const slugDefault = AGENT.listingSlug;
+
+export function generateStaticParams() {
+  return [{ slug: AGENT.listingSlug }];
+}
 
 export default async function ListingPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

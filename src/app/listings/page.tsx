@@ -2,7 +2,7 @@ import { getListingBySlug } from "@/lib/data";
 import { AGENT } from "@/lib/config";
 import ListingCard from "@/components/listing/ListingCard";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export const metadata = {
   title: "The Estates | Hawk's Nest Florida",

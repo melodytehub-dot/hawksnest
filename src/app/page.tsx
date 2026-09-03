@@ -5,7 +5,7 @@ import { AGENT } from "@/lib/config";
 import { starIcon, pinIcon } from "@/components/site/icons";
 import ListingCard from "@/components/listing/ListingCard";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function HomePage() {
   const data = await getListingBySlug(AGENT.listingSlug);
