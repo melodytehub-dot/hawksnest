@@ -3,6 +3,9 @@
 import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
+import bcrypt from "bcryptjs";
+
+const passwordHash = (pw: string) => bcrypt.hash(pw, 12);
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL || "postgresql://localhost:5432/hawksnest" });
 const prisma = new PrismaClient({ adapter: new PrismaPg(pool) });
@@ -148,7 +151,19 @@ async function main() {
     });
   }
 
-  console.log("Seed complete:", listing.title, "| photos:", gOrder, "| rooms:", roomData.length);
+  // admin owner account (used to log into /dashboard)
+  const adminEmail = process.env.OWNER_EMAIL || "Hawklevy@gmail.com";
+  await prisma.adminUser.upsert({
+    where: { email: adminEmail },
+    update: {},
+    create: {
+      email: adminEmail,
+      name: "Hawk's Nest Owner",
+      passwordHash: await passwordHash(process.env.ADMIN_PASSWORD || "Hawk@Nest2026"),
+    },
+  });
+
+  console.log("Seed complete:", listing.title, "| photos:", gOrder, "| rooms:", roomData.length, "| admin:", adminEmail);
 }
 
 main()
