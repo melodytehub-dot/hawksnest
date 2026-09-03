@@ -12,7 +12,7 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hawksnestflorida.vercel.app"),
+  metadataBase: new URL("https://hawksnest.vercel.app"),
   title: {
     default: "Hawk's Nest — Spacious Estate Home in Port St. Lucie, FL",
     template: "%s | Hawk's Nest",
