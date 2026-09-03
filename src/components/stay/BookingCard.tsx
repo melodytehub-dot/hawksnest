@@ -141,7 +141,7 @@ export default function BookingCard({ listingId, listingSlug, maxGuests, minNigh
         onClick={() => setPicking((v) => !v)}
         aria-expanded={picking}
       >
-        <span className="text-[var(--ta-green)]">{calendarIcon}</span>
+        <span className="text-[var(--ta-gold)]">{calendarIcon}</span>
         <div className="flex-1">
           <div className="text-xs font-medium text-[var(--ta-muted)]">Dates</div>
           <div className="text-sm font-semibold">
@@ -190,7 +190,7 @@ export default function BookingCard({ listingId, listingSlug, maxGuests, minNigh
       )}
 
       <div className="mt-3 flex w-full items-center gap-3 rounded-xl border border-[var(--ta-border)] px-4 py-3">
-        <span className="text-[var(--ta-green)]">{guestIcon}</span>
+        <span className="text-[var(--ta-gold)]">{guestIcon}</span>
         <div className="flex-1">
           <div className="text-xs font-medium text-[var(--ta-muted)]">Guests</div>
           <div className="text-sm font-semibold">{guests} guest{guests > 1 ? "s" : ""}</div>
@@ -218,7 +218,7 @@ export default function BookingCard({ listingId, listingSlug, maxGuests, minNigh
             <div key={f.label} className="mt-1 flex justify-between"><span className="text-[var(--ta-muted)]">{f.label}</span><span>{money(f.amount, currency)}</span></div>
           ))}
           <div className="mt-1 flex justify-between text-[var(--ta-muted)]"><span>Taxes</span><span>{money(quote.taxes, currency)}</span></div>
-          <div className="mt-2 flex justify-between border-t border-[var(--ta-border)] pt-2 font-bold"><span>Total</span><span className="text-[var(--ta-green)]">{money(quote.total, currency)}</span></div>
+          <div className="mt-2 flex justify-between border-t border-[var(--ta-border)] pt-2 font-bold"><span>Total</span><span className="text-[var(--ta-gold)]">{money(quote.total, currency)}</span></div>
         </div>
       )}
 

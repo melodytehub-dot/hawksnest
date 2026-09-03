@@ -26,7 +26,7 @@ export default function ContactPage() {
             <div className="rounded-xl bg-[var(--ta-bg-tint)] p-5">
               <h2 className="text-sm font-bold uppercase tracking-wide text-[var(--ta-muted)]">Availability</h2>
               <p className="mt-2 text-sm text-[var(--ta-text)]">Check your dates on the estate page — you'll receive a prompt acknowledgment with pricing and next steps.</p>
-              <Link href={`${AGENT.bookingRoute}#check`} className="mt-3 inline-block text-sm font-semibold text-[var(--ta-green)] hover:underline">Check availability →</Link>
+              <Link href={`${AGENT.bookingRoute}#check`} className="mt-3 inline-block text-sm font-semibold text-[var(--ta-gold)] hover:underline">Check availability →</Link>
             </div>
           </div>
 
@@ -50,7 +50,7 @@ function InfoCard({ label, value, href, note }: { label: string; value: string; 
   return (
     <div className="rounded-xl border border-[var(--ta-border)] p-5">
       <h2 className="text-sm font-bold uppercase tracking-wide text-[var(--ta-muted)]">{label}</h2>
-      {href ? <a href={href} className="mt-2 block text-lg font-semibold text-[var(--ta-green)] hover:underline">{value}</a> : <p className="mt-2 text-lg font-semibold text-[var(--ta-black)]">{value}</p>}
+      {href ? <a href={href} className="mt-2 block text-lg font-semibold text-[var(--ta-gold)] hover:underline">{value}</a> : <p className="mt-2 text-lg font-semibold text-[var(--ta-black)]">{value}</p>}
       {note && <p className="mt-1 text-sm text-[var(--ta-muted)]">{note}</p>}
     </div>
   );

@@ -37,7 +37,7 @@ export default async function DashboardPage() {
         <ul className="mt-4 space-y-2">
           {materials.map((m) => (
             <li key={m.key} className="flex items-start gap-3 rounded-lg border border-[var(--ta-border-soft)] px-3 py-2">
-              <span className={`mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full text-xs ${m.done ? "bg-[var(--ta-green)] text-white" : "border border-[var(--ta-border)]"}`}>
+              <span className={`mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full text-xs ${m.done ? "bg-[var(--ta-gold)] text-white" : "border border-[var(--ta-border)]"}`}>
                 {m.done ? "✓" : ""}
               </span>
               <div>
@@ -88,7 +88,7 @@ export default async function DashboardPage() {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-[var(--ta-border)] bg-white p-6">
-      <div className="text-3xl font-extrabold text-[var(--ta-green)]">{value}</div>
+      <div className="text-3xl font-extrabold text-[var(--ta-gold)]">{value}</div>
       <div className="mt-1 text-sm text-[var(--ta-muted)]">{label}</div>
     </div>
   );

@@ -39,14 +39,14 @@ export default function LoginPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-green)] focus:outline-none"
+          className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-gold)] focus:outline-none"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-green)] focus:outline-none"
+          className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-gold)] focus:outline-none"
         />
         {err && <div className="text-sm font-medium text-[var(--ta-red)]">{err}</div>}
         <button className="ta-btn ta-btn--primary" disabled={loading}>{loading ? "Signing in…" : "Sign in"}</button>

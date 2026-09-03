@@ -42,7 +42,7 @@ export default function ListingCard({ listing }: { listing: ListingCardListing }
       {/* Body */}
       <div className="p-5">
         <div className="flex items-center gap-2 text-sm">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--ta-green)] text-white">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--ta-gold)] text-white">
             {starIcon({ className: "h-4 w-4" })}
           </span>
           <span className="font-bold text-[var(--ta-black)]">{listing.rating.toFixed(2)}</span>
@@ -50,12 +50,12 @@ export default function ListingCard({ listing }: { listing: ListingCardListing }
         </div>
 
         <h2 className="mt-3 text-lg font-extrabold leading-snug text-[var(--ta-black)]">
-          <Link href={`/stay/${listing.slug}`} className="hover:text-[var(--ta-green)]">
+          <Link href={`/stay/${listing.slug}`} className="hover:text-[var(--ta-gold)]">
             {listing.title}
           </Link>
         </h2>
         <p className="mt-1 flex items-center gap-1 text-sm text-[var(--ta-muted)]">
-          <span className="text-[var(--ta-green)]">{pinIcon}</span>
+          <span className="text-[var(--ta-gold)]">{pinIcon}</span>
           {listing.subtitle}
         </p>
 
@@ -67,7 +67,7 @@ export default function ListingCard({ listing }: { listing: ListingCardListing }
 
         <div className="mt-4 flex items-center justify-between border-t border-[var(--ta-border-soft)] pt-4">
           <div>
-            <span className="text-base font-extrabold text-[var(--ta-green)]">Rates on request</span>
+            <span className="text-base font-extrabold text-[var(--ta-gold)]">Rates on request</span>
             <span className="block text-xs text-[var(--ta-muted)]">entire estate · per night</span>
           </div>
         </div>

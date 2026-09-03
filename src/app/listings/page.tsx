@@ -50,7 +50,7 @@ export default async function ListingsPage() {
                 <span aria-hidden="true">›</span>
                 <span>The Estates</span>
               </nav>
-              <h1 className="text-3xl font-extrabold text-white md:text-4xl">The <span className="text-[var(--ta-green-tint)]">Estates</span></h1>
+              <h1 className="text-3xl font-extrabold text-white md:text-4xl">The <span className="text-[var(--ta-gold-soft)]">Estates</span></h1>
               <p className="mt-2 max-w-xl text-white/90">
                 One home, thoughtfully kept, and ready for your group — a five-bedroom country-club estate on Florida's Treasure Coast.
               </p>
@@ -70,10 +70,10 @@ export default async function ListingsPage() {
                 A country-club estate with five bedrooms, a private pool and hot tub, a waterfall, and room for the whole group. Minutes from pristine beaches and over 50 golf courses.
               </p>
               <ul className="space-y-2 text-sm text-[var(--ta-text)]">
-                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-green)]" />5 bedrooms · sleeps 16</li>
-                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-green)]" />Private pool, hot tub &amp; waterfall</li>
-                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-green)]" />11 minutes to pristine beaches</li>
-                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-green)]" />Booked directly with the owner — no platform fees</li>
+                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-gold)]" />5 bedrooms · sleeps 16</li>
+                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-gold)]" />Private pool, hot tub &amp; waterfall</li>
+                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-gold)]" />11 minutes to pristine beaches</li>
+                <li className="flex items-center gap-2"><span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-gold)]" />Booked directly with the owner — no platform fees</li>
               </ul>
             </div>
           </div>

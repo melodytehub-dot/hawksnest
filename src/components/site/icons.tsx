@@ -65,7 +65,7 @@ export const checkIcon = (
 );
 
 export const ownerCircle = (initials = "H") => (
-  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--ta-green-soft)] text-sm font-bold text-[var(--ta-green-dark)]">
+  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--ta-gold-soft)] text-sm font-bold text-[var(--ta-gold-deep)]">
     {initials}
   </span>
 );

@@ -1,31 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  /* TripAdvisor-style palette */
+  /* Luxury navy/gold palette (from the estate's brand) */
+  --navy: #0b2a33;
+  --navy-deep: #071d24;
+  --navy-soft: #123c48;
+  --gold: #c2a26b;
+  --gold-deep: #a9864d;
+  --gold-soft: #e9dcc2;
+  --ivory: #faf8f3;
+  --sand: #f3eee4;
+
+  /* TripAdvisor green — kept for buttons + calendar */
   --ta-green: #00aa6c;
   --ta-green-dark: #00895a;
   --ta-green-soft: #e0f4eb;
   --ta-green-tint: #cdefe0;
-  --ta-black: #0a0a0a;
-  --ta-text: #232323;
-  --ta-muted: #6a6a6a;
-  --ta-gray: #9b9b9b;
-  --ta-border: #e0e0e0;
-  --ta-border-soft: #ebebeb;
-  --ta-bg: #ffffff;
-  --ta-bg-soft: #f5f5f5;
-  --ta-bg-tint: #fafafa;
+
+  /* Semantic tokens — mapped to the navy/gold presentational palette */
+  --ta-black: var(--navy);
+  --ta-text: #12252e;
+  --ta-muted: #5b584f;
+  --ta-gray: #8b867a;
+  --ta-border: #e7dfd0;
+  --ta-border-soft: #efe8da;
+  --ta-bg: var(--ivory);
+  --ta-bg-soft: var(--sand);
+  --ta-bg-tint: #f7f2e9;
   --ta-red: #d60b52;      /* reviews/ratings accents */
-  --ta-amber: #ffd700;
+  --ta-amber: var(--gold);
+
+  /* Gold accents */
+  --ta-gold: var(--gold);
+  --ta-gold-deep: var(--gold-deep);
+  --ta-gold-soft: var(--gold-soft);
 
   --font-sans: var(--font-figtree), system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 @theme inline {
   --font-sans: var(--font-figtree), system-ui, sans-serif;
-  --color-brand: var(--ta-green);
-  --color-brand-dark: var(--ta-green-dark);
-  --color-brand-soft: var(--ta-green-soft);
+  --color-brand: var(--ta-gold);
+  --color-brand-dark: var(--ta-gold-deep);
+  --color-brand-soft: var(--ta-gold-soft);
   --color-brand-tint: var(--ta-green-tint);
   --color-ink: var(--ta-black);
   --color-text: var(--ta-text);
@@ -123,9 +140,9 @@ button {
   border-color: var(--ta-black);
 }
 .ta-chip--active {
-  border-color: var(--ta-green);
-  background: var(--ta-green-soft);
-  color: var(--ta-green-dark);
+  border-color: var(--ta-gold);
+  background: var(--ta-gold-soft);
+  color: var(--ta-gold-deep);
 }
 
 .ta-badge-score {

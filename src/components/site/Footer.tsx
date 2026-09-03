@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-[var(--ta-border-soft)] bg-white">
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-8 px-4 py-12 sm:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
-          <div className="mb-3 text-xl font-extrabold text-[var(--ta-green)]">Hawk's Nest</div>
+          <div className="mb-3 text-xl font-extrabold text-[var(--ta-gold)]">Hawk's Nest</div>
           <p className="text-sm leading-relaxed text-[var(--ta-muted)]">
             Spacious country-club estate home on Florida's Treasure Coast. Private pool, hot tub, waterfall and
             room for the whole group — booked directly with the owner.
@@ -17,11 +17,11 @@ export default function Footer() {
         <div>
           <h4 className="mb-3 text-sm font-bold uppercase tracking-wide text-[var(--ta-black)]">Explore</h4>
           <ul className="space-y-2 text-sm text-[var(--ta-text)]">
-            <li><Link href="/" className="hover:text-[var(--ta-green)]">Home</Link></li>
-            <li><Link href="/listings" className="hover:text-[var(--ta-green)]">The Estates</Link></li>
-            <li><Link href={AGENT.bookingRoute} className="hover:text-[var(--ta-green)]">The Estate</Link></li>
-            <li><Link href="/about" className="hover:text-[var(--ta-green)]">About</Link></li>
-            <li><Link href="/contact" className="hover:text-[var(--ta-green)]">Contact</Link></li>
+            <li><Link href="/" className="hover:text-[var(--ta-gold)]">Home</Link></li>
+            <li><Link href="/listings" className="hover:text-[var(--ta-gold)]">The Estates</Link></li>
+            <li><Link href={AGENT.bookingRoute} className="hover:text-[var(--ta-gold)]">The Estate</Link></li>
+            <li><Link href="/about" className="hover:text-[var(--ta-gold)]">About</Link></li>
+            <li><Link href="/contact" className="hover:text-[var(--ta-gold)]">Contact</Link></li>
           </ul>
         </div>
 
@@ -31,7 +31,7 @@ export default function Footer() {
             <li>5 bedrooms · sleeps 16</li>
             <li>Private pool &amp; hot tub</li>
             <li>3 full bathrooms</li>
-            <li><Link href={`${AGENT.bookingRoute}#check`} className="font-semibold text-[var(--ta-green)] hover:underline">Check availability</Link></li>
+            <li><Link href={`${AGENT.bookingRoute}#check`} className="font-semibold text-[var(--ta-gold)] hover:underline">Check availability</Link></li>
           </ul>
         </div>
 
@@ -40,7 +40,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-[var(--ta-text)]">
             <li>{SITE.address}</li>
             <li className="break-all">
-              <a href={`mailto:${SITE.ownerEmail}`} className="text-[var(--ta-green)] hover:underline">{SITE.ownerEmail}</a>
+              <a href={`mailto:${SITE.ownerEmail}`} className="text-[var(--ta-gold)] hover:underline">{SITE.ownerEmail}</a>
             </li>
           </ul>
         </div>

@@ -135,19 +135,19 @@ export default async function HomePage() {
       <section className="bg-[var(--ta-black)]">
         <div className="mx-auto max-w-[1240px] px-4 py-14 text-center md:px-6">
           <p className="text-2xl font-extrabold text-white md:text-4xl">
-            The <span className="text-[var(--ta-green)]">gem</span> of the Treasure Coast.
+            The <span className="text-[var(--ta-gold)]">gem</span> of the Treasure Coast.
           </p>
           <p className="mt-3 text-sm uppercase tracking-wide text-white/60">Hawk's Nest Florida</p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-[var(--ta-green)]">
+      <section className="bg-[var(--ta-black)]">
         <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-4 px-4 py-14 text-center md:px-6">
           <h2 className="text-2xl font-extrabold text-white md:text-3xl">Plan your Treasure Coast getaway</h2>
           <p className="max-w-xl text-white/90">Check your dates and book directly with the owner — no platform fees, personal confirmation.</p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href={`${AGENT.bookingRoute}#check`} className="ta-btn bg-white px-7 py-3 text-[var(--ta-green-dark)]">Check availability</Link>
+            <Link href={`${AGENT.bookingRoute}#check`} className="ta-btn bg-white px-7 py-3 text-[var(--ta-black)]">Check availability</Link>
             <Link href="/listings" className="ta-btn ta-btn--outline border-white/60 px-7 py-3 text-white">Browse the estates</Link>
           </div>
         </div>

@@ -27,7 +27,7 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
     <div>
       {/* Breadcrumb */}
       <div className="mx-auto max-w-[1240px] px-4 pt-4 text-sm text-[var(--ta-muted)] md:px-6">
-        <span className="text-[var(--ta-green)]">Vacation Rentals</span>
+        <span className="text-[var(--ta-gold)]">Vacation Rentals</span>
         <span className="mx-1.5">›</span>
         <span>{l.city}</span>
         <span className="mx-1.5">›</span>
@@ -48,7 +48,7 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
                 {l.rating.toFixed(2)}
                 <span className="font-normal text-[var(--ta-muted)]">({l.reviewCount} reviews)</span>
               </span>
-              <span className="flex items-center gap-1 text-[var(--ta-muted)]"><span className="text-[var(--ta-green)]">{pinIcon}</span>{l.city}, {l.state}</span>
+              <span className="flex items-center gap-1 text-[var(--ta-muted)]"><span className="text-[var(--ta-gold)]">{pinIcon}</span>{l.city}, {l.state}</span>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
                     <ul className="mt-2 grid grid-cols-1 gap-1.5 text-sm text-[var(--ta-text)]">
                       {group.items.slice(0, 12).map((item, ii) => (
                         <li key={ii} className="flex items-start gap-2">
-                          <span className="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-green)]" />
+                          <span className="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-[var(--ta-gold)]" />
                           {item}
                         </li>
                       ))}
@@ -124,10 +124,10 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
             <section className="mt-8">
               <h2 className="text-xl font-extrabold text-[var(--ta-black)]">Good to know</h2>
               <ul className="mt-3 flex flex-col gap-2 text-sm text-[var(--ta-text)]">
-                <li className="flex items-center gap-2"><span className="text-[var(--ta-green)]">{ownerCircle()}</span>{l.maxGuests} guests max · quiet residential area</li>
+                <li className="flex items-center gap-2"><span className="text-[var(--ta-gold)]">{ownerCircle()}</span>{l.maxGuests} guests max · quiet residential area</li>
                 <li className="flex items-center gap-2"><span className="text-[var(--ta-red)]">•</span>NO LOUD PARTIES — we respect our neighbors.</li>
-                <li className="flex items-center gap-2"><span className="text-[var(--ta-green)]">•</span>Whole home yours, except the garage.</li>
-                <li className="flex items-center gap-2"><span className="text-[var(--ta-green)]">•</span>Self check-in · free parking on premises.</li>
+                <li className="flex items-center gap-2"><span className="text-[var(--ta-gold)]">•</span>Whole home yours, except the garage.</li>
+                <li className="flex items-center gap-2"><span className="text-[var(--ta-gold)]">•</span>Self check-in · free parking on premises.</li>
               </ul>
             </section>
 
@@ -135,8 +135,8 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
             <section className="mt-8 border-t border-[var(--ta-border-soft)] pt-8">
               <h2 className="text-xl font-extrabold text-[var(--ta-black)]">What guests say</h2>
               <div className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-[auto_1fr]">
-                <div className="flex flex-col items-center justify-center rounded-2xl bg-[var(--ta-green-soft)] px-8 py-6 text-center">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-white text-[var(--ta-green)]">
+                <div className="flex flex-col items-center justify-center rounded-2xl bg-[var(--ta-gold-soft)] px-8 py-6 text-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-white text-[var(--ta-gold)]">
                     {starIcon({ className: "h-8 w-8" })}
                   </span>
                   <div className="mt-2 text-3xl font-extrabold text-[var(--ta-black)]">{l.rating.toFixed(2)}</div>

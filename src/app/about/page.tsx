@@ -39,7 +39,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[var(--ta-green)]">
+      <section className="bg-[var(--ta-black)]">
         <div className="mx-auto max-w-[1240px] px-4 py-12 text-center md:px-6">
           <p className="text-lg font-medium text-white">A private, resort-style escape — booked directly with the owner.</p>
         </div>
@@ -51,7 +51,7 @@ export default function AboutPage() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded-xl border border-[var(--ta-border)] p-5 text-center">
-      <div className="text-3xl font-extrabold text-[var(--ta-green)]">{value}</div>
+      <div className="text-3xl font-extrabold text-[var(--ta-gold)]">{value}</div>
       <div className="mt-1 text-sm text-[var(--ta-muted)]">{label}</div>
     </div>
   );

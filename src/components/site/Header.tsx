@@ -13,7 +13,7 @@ export default function Header() {
       <header className="sticky top-0 z-50 border-b border-[var(--ta-border-soft)] bg-white">
         <div className="mx-auto flex max-w-[1240px] items-center gap-4 px-4 py-3 md:px-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 text-[var(--ta-green)]">
+          <Link href="/" className="flex items-center gap-2 text-[var(--ta-gold)]">
             <svg viewBox="0 0 36 36" className="h-9 w-9" fill="currentColor" aria-hidden="true">
               <path d="M18 2C9.2 2 2 9.2 2 18s7.2 16 16 16 16-7.2 16-16S26.8 2 18 2zm0 29C10.8 31 5 25.2 5 18S10.8 5 18 5s13 5.8 13 13-5.8 13-13 13z" />
               <path d="M18 9l3.5 6 .9-1.6L28 9c-2.7-2.5-6.2-4-10-4s-7.3 1.5-10 4l5.6 4.4L14 15z" />

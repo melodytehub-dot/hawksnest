@@ -74,7 +74,7 @@ function BookInner() {
   if (status === "done") {
     return (
       <div className="mx-auto max-w-xl px-4 py-20 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--ta-green-soft)] text-2xl text-[var(--ta-green-dark)]">✓</div>
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--ta-gold-soft)] text-2xl text-[var(--ta-gold-deep)]">✓</div>
         <h1 className="text-2xl font-extrabold">{paymentsEnabled ? "Request received" : "Request sent"}</h1>
         <p className="mt-3 text-[var(--ta-muted)]">
           Thanks, {form.name.split(" ")[0] || "there"}! We have your request for{" "}
@@ -96,19 +96,19 @@ function BookInner() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="mb-1 block text-sm font-semibold" htmlFor="name">Full name</label>
-              <input id="name" className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-green)] focus:outline-none" value={form.name} onChange={set("name")} placeholder="Your name" />
+              <input id="name" className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-gold)] focus:outline-none" value={form.name} onChange={set("name")} placeholder="Your name" />
             </div>
             <div>
               <label className="mb-1 block text-sm font-semibold" htmlFor="email">Email</label>
-              <input id="email" type="email" className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-green)] focus:outline-none" value={form.email} onChange={set("email")} placeholder="you@example.com" />
+              <input id="email" type="email" className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-gold)] focus:outline-none" value={form.email} onChange={set("email")} placeholder="you@example.com" />
             </div>
             <div>
               <label className="mb-1 block text-sm font-semibold" htmlFor="phone">Phone (optional)</label>
-              <input id="phone" className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-green)] focus:outline-none" value={form.phone} onChange={set("phone")} placeholder="+1 555 555 5555" />
+              <input id="phone" className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-gold)] focus:outline-none" value={form.phone} onChange={set("phone")} placeholder="+1 555 555 5555" />
             </div>
             <div className="sm:col-span-2">
               <label className="mb-1 block text-sm font-semibold" htmlFor="message">Anything we should know?</label>
-              <textarea id="message" rows={3} className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-green)] focus:outline-none" value={form.message} onChange={set("message")} placeholder="Trip type, special occasions, questions…" />
+              <textarea id="message" rows={3} className="w-full rounded-lg border border-[var(--ta-border)] px-3 py-2.5 text-sm focus:border-[var(--ta-gold)] focus:outline-none" value={form.message} onChange={set("message")} placeholder="Trip type, special occasions, questions…" />
             </div>
           </div>
           {err && <div className="mt-4 text-sm font-medium text-[var(--ta-red)]">{err}</div>}
@@ -132,7 +132,7 @@ function BookInner() {
                 <div key={f.label} className="flex justify-between text-[var(--ta-muted)]"><span>{f.label}</span><span>{money(f.amount)}</span></div>
               ))}
               <div className="mt-1 flex justify-between text-[var(--ta-muted)]"><span>Taxes</span><span>{money(quote.taxes)}</span></div>
-              <div className="mt-2 flex justify-between font-bold"><span>Total</span><span className="text-[var(--ta-green)]">{money(quote.total)}</span></div>
+              <div className="mt-2 flex justify-between font-bold"><span>Total</span><span className="text-[var(--ta-gold)]">{money(quote.total)}</span></div>
             </div>
           )}
         </aside>
