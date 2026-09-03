@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getListingBySlug, parseAmenities } from "@/lib/data";
 import { AGENT } from "@/lib/config";
 import { starIcon, pinIcon } from "@/components/site/icons";
+import ListingCard from "@/components/listing/ListingCard";
 
 export const dynamic = "force-dynamic";
 
@@ -71,6 +72,35 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Featured estate */}
+      {l && (
+        <section className="mx-auto max-w-[1240px] px-4 py-14 md:px-6">
+          <div className="mb-8 text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[var(--ta-muted)]">Latest listing</p>
+            <h2 className="mt-1 text-2xl font-extrabold text-[var(--ta-black)] md:text-3xl">Ready to plan your Treasure Coast getaway?</h2>
+          </div>
+          <div className="mx-auto max-w-[640px]">
+            <ListingCard
+              listing={{
+                slug: l.slug,
+                title: l.title,
+                subtitle: `Entire home in ${l.city}, ${l.state}`,
+                city: l.city,
+                state: l.state,
+                rating: l.rating,
+                reviewCount: l.reviewCount,
+                maxGuests: l.maxGuests,
+                bedrooms: l.bedrooms,
+                bathrooms: l.bathrooms,
+                beds: l.beds,
+                heroSrc: hero,
+                photoCount: l.photos?.length || 0,
+              }}
+            />
+          </div>
+        </section>
+      )}
+
       {/* Photo gallery preview */}
       {l && l.photos.length > 8 && (
         <section className="mx-auto max-w-[1240px] px-4 py-14 md:px-6">
@@ -101,12 +131,25 @@ export default async function HomePage() {
         </section>
       )}
 
+      {/* Quote band — the gem of the Treasure Coast */}
+      <section className="bg-[var(--ta-black)]">
+        <div className="mx-auto max-w-[1240px] px-4 py-14 text-center md:px-6">
+          <p className="text-2xl font-extrabold text-white md:text-4xl">
+            The <span className="text-[var(--ta-green)]">gem</span> of the Treasure Coast.
+          </p>
+          <p className="mt-3 text-sm uppercase tracking-wide text-white/60">Hawk's Nest Florida</p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-[var(--ta-green)]">
         <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-4 px-4 py-14 text-center md:px-6">
           <h2 className="text-2xl font-extrabold text-white md:text-3xl">Plan your Treasure Coast getaway</h2>
           <p className="max-w-xl text-white/90">Check your dates and book directly with the owner — no platform fees, personal confirmation.</p>
-          <Link href={`${AGENT.bookingRoute}#check`} className="ta-btn bg-white px-7 py-3 text-[var(--ta-green-dark)]">Check availability</Link>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link href={`${AGENT.bookingRoute}#check`} className="ta-btn bg-white px-7 py-3 text-[var(--ta-green-dark)]">Check availability</Link>
+            <Link href="/listings" className="ta-btn ta-btn--outline border-white/60 px-7 py-3 text-white">Browse the estates</Link>
+          </div>
         </div>
       </section>
     </div>

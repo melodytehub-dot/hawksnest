@@ -18,6 +18,7 @@ export default function Footer() {
           <h4 className="mb-3 text-sm font-bold uppercase tracking-wide text-[var(--ta-black)]">Explore</h4>
           <ul className="space-y-2 text-sm text-[var(--ta-text)]">
             <li><Link href="/" className="hover:text-[var(--ta-green)]">Home</Link></li>
+            <li><Link href="/listings" className="hover:text-[var(--ta-green)]">The Estates</Link></li>
             <li><Link href={AGENT.bookingRoute} className="hover:text-[var(--ta-green)]">The Estate</Link></li>
             <li><Link href="/about" className="hover:text-[var(--ta-green)]">About</Link></li>
             <li><Link href="/contact" className="hover:text-[var(--ta-green)]">Contact</Link></li>

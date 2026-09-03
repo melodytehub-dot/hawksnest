@@ -130,6 +130,38 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
                 <li className="flex items-center gap-2"><span className="text-[var(--ta-green)]">•</span>Self check-in · free parking on premises.</li>
               </ul>
             </section>
+
+            {/* What guests say */}
+            <section className="mt-8 border-t border-[var(--ta-border-soft)] pt-8">
+              <h2 className="text-xl font-extrabold text-[var(--ta-black)]">What guests say</h2>
+              <div className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-[auto_1fr]">
+                <div className="flex flex-col items-center justify-center rounded-2xl bg-[var(--ta-green-soft)] px-8 py-6 text-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-white text-[var(--ta-green)]">
+                    {starIcon({ className: "h-8 w-8" })}
+                  </span>
+                  <div className="mt-2 text-3xl font-extrabold text-[var(--ta-black)]">{l.rating.toFixed(2)}</div>
+                  <div className="text-sm text-[var(--ta-muted)]">{l.reviewCount} reviews</div>
+                </div>
+                <div className="flex flex-col justify-center gap-4">
+                  <div className="flex items-center gap-2">
+                    {ownerCircle("H")}
+                    <div>
+                      <div className="text-sm font-bold text-[var(--ta-black)]">Hosted by Hawk</div>
+                      <div className="text-xs text-[var(--ta-muted)]">Superhost · Port St. Lucie, FL</div>
+                    </div>
+                  </div>
+                  <p className="leading-relaxed text-[var(--ta-text)]">
+                    Guests describe Hawk's Nest as the "gem of the Treasure Coast" — a spacious, private country-club
+                    estate that comfortably hosts families, golf groups and multi-generational trips.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="rounded-lg bg-[var(--ta-bg-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--ta-text)]">Great location · 11 min to beaches</span>
+                    <span className="rounded-lg bg-[var(--ta-bg-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--ta-text)]">Room for large groups</span>
+                    <span className="rounded-lg bg-[var(--ta-bg-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--ta-text)]">Easy, direct booking</span>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
 
           {/* Booking sidebar */}

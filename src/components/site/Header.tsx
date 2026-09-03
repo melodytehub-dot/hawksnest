@@ -34,6 +34,9 @@ export default function Header() {
             <Link className="rounded px-3 py-2 text-sm font-semibold text-[var(--ta-text)] hover:bg-[var(--ta-bg-soft)]" href="/">
               Home
             </Link>
+            <Link className="rounded px-3 py-2 text-sm font-semibold text-[var(--ta-text)] hover:bg-[var(--ta-bg-soft)]" href="/listings">
+              Listings
+            </Link>
             <Link className="rounded px-3 py-2 text-sm font-semibold text-[var(--ta-text)] hover:bg-[var(--ta-bg-soft)]" href={AGENT.bookingRoute}>
               The Estate
             </Link>
@@ -67,6 +70,9 @@ export default function Header() {
             <nav className="flex flex-col gap-1">
               <Link className="rounded px-3 py-3 text-base font-semibold hover:bg-[var(--ta-bg-soft)]" href="/" onClick={() => setOpen(false)}>
                 Home
+              </Link>
+              <Link className="rounded px-3 py-3 text-base font-semibold hover:bg-[var(--ta-bg-soft)]" href="/listings" onClick={() => setOpen(false)}>
+                Listings
               </Link>
               <Link className="rounded px-3 py-3 text-base font-semibold hover:bg-[var(--ta-bg-soft)]" href={AGENT.bookingRoute} onClick={() => setOpen(false)}>
                 The Estate
